@@ -2,9 +2,9 @@
 A django project which creates an ORM database about movies, directors and actors. The project also uses custom flag commands, so the database can be updated and queried through just using terminal.
 
 ## Installation 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install pipenv.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install pipenv, django and django-extensions.
 ```bash
-pip install pipenv
+pip install pipenv, django, django-extensions
 ```
 
 If you want to use VSCode terminal with this django project you have to select a correct python interpreter. First get knowledge of a venv directory:
