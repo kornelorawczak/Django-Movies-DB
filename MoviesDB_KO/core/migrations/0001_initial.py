@@ -6,9 +6,11 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+
     initial = True
 
-    dependencies = []
+    dependencies = [
+    ]
 
     operations = [
         migrations.CreateModel(
@@ -37,30 +39,9 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=100)),
                 ('premiere_date', models.DateField()),
                 ('category', models.CharField(default=' ', max_length=200)),
-                (
-                    'academy_awards',
-                    models.SmallIntegerField(
-                        validators=[
-                            django.core.validators.MinValueValidator(0),
-                            django.core.validators.MaxValueValidator(11),
-                        ]
-                    ),
-                ),
-                (
-                    'director_id',
-                    models.ForeignKey(
-                        null=True,
-                        on_delete=django.db.models.deletion.SET_NULL,
-                        related_name='movies',
-                        to='core.directors',
-                    ),
-                ),
-                (
-                    'lead_actor_id',
-                    models.ForeignKey(
-                        null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='movies', to='core.actors'
-                    ),
-                ),
+                ('academy_awards', models.SmallIntegerField(validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(11)])),
+                ('director_id', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='movies', to='core.directors')),
+                ('lead_actor_id', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='movies', to='core.actors')),
             ],
         ),
     ]

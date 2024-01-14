@@ -5,6 +5,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+
     dependencies = [
         ('core', '0005_alter_actors_latest_movie_and_more'),
     ]
@@ -13,11 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='movies',
             name='academy_awards',
-            field=models.SmallIntegerField(
-                default=' ',
-                null=True,
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(11)],
-            ),
+            field=models.SmallIntegerField(default=' ', null=True, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(11)]),
         ),
         migrations.AlterField(
             model_name='movies',

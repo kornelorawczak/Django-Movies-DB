@@ -1,2 +1,3 @@
 # Django-Movies-DB
-A django project 
+
+A django project

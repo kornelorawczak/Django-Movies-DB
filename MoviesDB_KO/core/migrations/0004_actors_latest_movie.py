@@ -4,6 +4,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+
     dependencies = [
         ('core', '0003_remove_actors_surname_remove_directors_surname_and_more'),
     ]

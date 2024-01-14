@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from MoviesDB_KO import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('movies/', views.movies_list),
+    path('actors/', views.actors_list),
+    path('directors/', views.directors_list),
+    path('directors/<int:id>', views.directors_detail),
+    path('actors/<int:id>', views.actors_detail),
+    path('movies/<int:id>', views.movies_detail),
 ]
