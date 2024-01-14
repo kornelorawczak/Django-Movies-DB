@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('core', '0002_rename_director_id_movies_director_and_more'),
     ]
@@ -48,17 +47,32 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='movies',
             name='academy_awards',
-            field=models.SmallIntegerField(default=' ', validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(11)]),
+            field=models.SmallIntegerField(
+                default=' ',
+                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(11)],
+            ),
         ),
         migrations.AlterField(
             model_name='movies',
             name='director',
-            field=models.ForeignKey(default=' ', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='movies', to='core.directors'),
+            field=models.ForeignKey(
+                default=' ',
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='movies',
+                to='core.directors',
+            ),
         ),
         migrations.AlterField(
             model_name='movies',
             name='lead_actor',
-            field=models.ForeignKey(default=' ', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='movies', to='core.actors'),
+            field=models.ForeignKey(
+                default=' ',
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='movies',
+                to='core.actors',
+            ),
         ),
         migrations.AlterField(
             model_name='movies',
