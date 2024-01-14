@@ -31,4 +31,4 @@ For example to add an actor to the database you can write
 ```bash
 python manage.py actors --add --name 'Christian Bale' --date_of_birth '1974-1-30' --latest_movie 'Thor: Love and Thunder'
 ```
->>>>>>> 438b2ec07eceeb03266ea27d7ccfe979f222cbd0
+
