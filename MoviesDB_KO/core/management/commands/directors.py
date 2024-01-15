@@ -1,14 +1,12 @@
-from datetime import datetime
-
-from core.models import Directors, Movies
+from core.data_operations import ApiOperations, DatabaseOperations
 from django.core.management.base import BaseCommand
-from django.db.utils import IntegrityError
 
 
 class Command(BaseCommand):
     help = 'Add a new Director figure to the DataBase. In order to do that you shall pass --add flag followed by --name, --date_of_birth, --latest_movie'
 
     def add_arguments(self, parser):
+        parser.add_argument('--mode', choices=['database', 'api'], default='database', help='Choose data access mode')
         parser.add_argument(
             '--write', action='store_true', help='Flag --write is necessary to write out the contents of database'
         )
@@ -30,47 +28,38 @@ class Command(BaseCommand):
         parser.add_argument('--latest_movie', type=str, help='Title of a latest movie directed by the given director')
 
     def handle(self, *args, **kwargs):
+        mode = kwargs['mode']
+
+        if mode == 'database':
+            database_operations = DatabaseOperations()
+        elif mode == 'api':
+            database_operations = ApiOperations()
+
         if kwargs['add']:
-            try:
-                name = kwargs['name']
-                date_of_birth = (
-                    datetime.strptime(kwargs['date_of_birth'], '%Y-%m-%d').date() if kwargs['date_of_birth'] else None
-                )
-                latest_movie = kwargs['latest_movie']
+            name = kwargs['name']
+            date_of_birth = kwargs['date_of_birth']
+            latest_movie = kwargs['latest_movie']
+            database_operations.add_director(name, date_of_birth, latest_movie)
 
-                director = Directors.objects.create(name=name, date_of_birth=date_of_birth, latest_movie=latest_movie)
-
-                self.stdout.write(self.style.SUCCESS(f'Successfully added {name} to the database!'))
-            except IntegrityError:
-                self.stdout.write(
-                    self.style.ERROR("Mandatory fields weren't given, you need to pass the name at least")
-                )
         elif kwargs['write']:
-            directors = Directors.objects.all()
+            directors = database_operations.get_directors()
             for i, director in enumerate(directors):
                 self.stdout.write(
-                    f'{i+1}. {director.name} born on {director.date_of_birth}. The latest movie he/she directed is called {director.latest_movie}'
+                    f"{director['id']}. {director['name']} born on {director['date_of_birth']}. The latest movie he/she directed is called {director['latest_movie']}"
                 )
-        elif kwargs['delete']:
-            record_number = kwargs['delete'] - 1
-            director_to_delete = Directors.objects.all()[record_number]
-            director_to_delete.delete()
-            self.stdout.write(self.style.SUCCESS(f'Successfully deleted director no. {record_number} from database!'))
-        elif kwargs['movies']:
-            if kwargs['movies'] < 1 or kwargs['movies'] > Directors.objects.count():
-                self.stdout.write(self.style.ERROR('Given number doesnt match any Director in the DataBase!'))
-            else:
-                director_selected = Directors.objects.get(id=kwargs['movies'])
-                movies = Movies.objects.filter(director=kwargs['movies'])
-                if movies.count() == 0:
-                    self.stdout.write('There are no movies matching selected director in the Database :(')
-                else:
-                    self.stdout.write(f'Movies directed by {director_selected.name} in the DataBase:')
-                    for i, movie in enumerate(movies):
-                        self.stdout.write(
-                            f'{i+1}. "{movie.title}" released on {movie.premiere_date} starring {movie.lead_actor} in lead role. It has won {movie.academy_awards} Academy Awards.'
-                        )
 
+        elif kwargs['delete']:
+            record_number = kwargs['delete']
+            database_operations.delete_director(record_number)
+
+        elif kwargs['movies']:
+            director_id = kwargs['movies']
+            movies = database_operations.get_movies_for_director(director_id)
+            if movies:
+                for i, movie in enumerate(movies):
+                    self.stdout.write(
+                        f'{i+1}. "{movie["title"]}" released on {movie["premiere_date"]} starring {movie["lead_actor"]} has won {movie["academy_awards"]} Academy Awards.'
+                    )
         else:
             self.stdout.write(
                 self.style.ERROR('You need to present at least one valid main flag! Type --help to get more info')

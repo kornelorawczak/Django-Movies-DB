@@ -1,4 +1,5 @@
 from core.models import Actors, Directors, Movies
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -72,6 +73,36 @@ def actors_detail(request, id):
     elif request.method == 'DELETE':
         actor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+def actor_movies(request, id):
+    actor = get_object_or_404(Actors, pk=id)
+    movies = Movies.objects.filter(lead_actor=actor)
+    serializer = serializers.MoviesSerializer(movies, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def actor_by_name(request, actor_name):
+    actor = get_object_or_404(Actors, name__iexact=actor_name)
+    serializer = serializers.ActorsSerializer(actor)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def director_movies(request, id):
+    director = get_object_or_404(Directors, pk=id)
+    movies = Movies.objects.filter(director=director)
+    serializer = serializers.MoviesSerializer(movies, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def director_by_name(request, director_name):
+    director = get_object_or_404(Directors, name__iexact=director_name)
+    serializer = serializers.DirectorsSerializer(director)
+    return Response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
