@@ -25,21 +25,13 @@ class TestApiOperations:
 
     def test_getting_movies_for_director(self, database_operations):
         director_name = 'John Doe'
-
-        # Dodaj reżysera
         director = database_operations.add_director(name=director_name)
-
-        # Dodaj film
         movie_title = 'Test Movie'
         lead_actor_name = 'Test Actor'
         movie = database_operations.add_movie(
             title=movie_title, lead_actor_given=lead_actor_name, director_given=director_name
         )
-
-        # Sprawdź, czy film jest zwracany poprawnie dla danego reżysera
         movies = database_operations.get_movies_for_director(director['id'])
         assert any(movie['title'] == movie_title for movie in movies)
-
-        # Usuń reżysera i film
         database_operations.delete_director(director['id'])
         database_operations.delete_movie(movie['id'])
