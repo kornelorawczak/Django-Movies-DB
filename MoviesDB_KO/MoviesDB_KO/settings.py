@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'core',
     'django_extensions',
     'rest_framework',
+    'tests',
 ]
 
 MIDDLEWARE = [
