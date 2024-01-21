@@ -16,7 +16,8 @@ class Migration(migrations.Migration):
             field=models.SmallIntegerField(
                 default=' ',
                 null=True,
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(11)],
+                validators=[django.core.validators.MinValueValidator(
+                    0), django.core.validators.MaxValueValidator(11)],
             ),
         ),
         migrations.AlterField(

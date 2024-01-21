@@ -56,7 +56,7 @@ class Command(BaseCommand):
             database_operations.delete_actor(record_number)
 
         elif kwargs['movies']:
-            # 'movies' flag will show information about all movies that selected actor played in 
+            # 'movies' flag will show information about all movies that selected actor played in
             actor_id = kwargs['movies']
             movies = database_operations.get_movies_for_actor(actor_id)
             if movies:

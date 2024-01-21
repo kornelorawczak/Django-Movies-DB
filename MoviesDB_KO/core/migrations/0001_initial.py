@@ -14,7 +14,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Actors',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
                 ('surname', models.CharField(max_length=150)),
                 ('date_of_birth', models.DateField()),
@@ -23,7 +24,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Directors',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
                 ('surname', models.CharField(max_length=150)),
                 ('date_of_birth', models.DateField()),
@@ -33,7 +35,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Movies',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=100)),
                 ('premiere_date', models.DateField()),
                 ('category', models.CharField(default=' ', max_length=200)),

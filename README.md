@@ -66,3 +66,12 @@ pytest
 
 ## Post Scriptum
 The code was altered to match PEP 8 standards, using autopep8 module
+```bash
+pip install autopep8
+autopep8 --in-place --recursive .\MoviesDB_KO\
+```
+Type adnotations are implemented in the code, they were checked using mypy module
+```bash
+pip install mypy
+mypy .\MoviesDB_KO\
+```

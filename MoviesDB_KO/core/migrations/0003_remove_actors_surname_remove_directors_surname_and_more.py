@@ -49,7 +49,8 @@ class Migration(migrations.Migration):
             name='academy_awards',
             field=models.SmallIntegerField(
                 default=' ',
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(11)],
+                validators=[django.core.validators.MinValueValidator(
+                    0), django.core.validators.MaxValueValidator(11)],
             ),
         ),
         migrations.AlterField(

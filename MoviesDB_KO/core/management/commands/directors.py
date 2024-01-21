@@ -7,7 +7,7 @@ from django.db.utils import IntegrityError
 
 
 class Command(BaseCommand):
-        # This class is responsible for implementing a text client for the directors model (python manage.py directors ...)
+    # This class is responsible for implementing a text client for the directors model (python manage.py directors ...)
     help = 'Add a new Director figure to the DataBase. In order to do that you shall pass --add flag followed by --name, --date_of_birth, --latest_movie'
 
     def add_arguments(self, parser):

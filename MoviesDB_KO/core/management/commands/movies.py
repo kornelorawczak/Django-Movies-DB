@@ -7,7 +7,7 @@ from django.db.utils import IntegrityError
 
 
 class Command(BaseCommand):
-        # This class is responsible for implementing a text client for the movies model (python manage.py movies ...)
+    # This class is responsible for implementing a text client for the movies model (python manage.py movies ...)
     help = 'Use --add followed by --title, --premiere_date, --director, --category, --lead_actor, --academy_awards to add a new Movie to the database. \n Use --write to write out all the \
         movies that currently are in database'
 
@@ -40,9 +40,9 @@ class Command(BaseCommand):
             database_operations = ApiOperations()
 
         if kwargs['add']:
-        # 'add' flag is reponsible for adding a movie record to the database. 
-        # You need to pass at least a title, director and actor (both of them shall be passed as a name)
-        # If there won't be an actor/director with given name in the database, they will be created
+            # 'add' flag is reponsible for adding a movie record to the database.
+            # You need to pass at least a title, director and actor (both of them shall be passed as a name)
+            # If there won't be an actor/director with given name in the database, they will be created
             title = kwargs['title']
             premiere_date = kwargs.get('premiere_date', None)
             if premiere_date != None:

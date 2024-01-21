@@ -14,6 +14,7 @@ urlpatterns = [
     path('movies/<int:id>/', views.movies_detail),
     path('actors/<int:id>/movies/', views.actor_movies),
     path('directors/<int:id>/movies/', views.director_movies),
-    path('directors/<str:director_name>/', views.director_by_name, name='director_by_name'),
+    path('directors/<str:director_name>/',
+         views.director_by_name, name='director_by_name'),
     path('actors/<str:actor_name>/', views.actor_by_name, name='actor_by_name'),
 ]

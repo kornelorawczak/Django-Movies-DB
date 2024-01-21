@@ -163,7 +163,7 @@ class ApiOperations(BaseCommand):
     API_BASE_URL = "http://127.0.0.1:8000"
 
     def add_actor(self, name: str, date_of_birth=None, latest_movie=None):
-                # Function responsible for adding an actor through api
+        # Function responsible for adding an actor through api
         actor_data: dict = {
             'name': name,
             'date_of_birth': date_of_birth,
@@ -207,7 +207,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_movies_for_actor(self, actor_id: int):
-        # Function responsible for getting data through api about movies that include acting performance of a chosen actor        
+        # Function responsible for getting data through api about movies that include acting performance of a chosen actor
         response = requests.get(
             f"{self.API_BASE_URL}/actors/{actor_id}/movies/")
         if response.status_code == 200:
@@ -225,7 +225,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def add_director(self, name: str, date_of_birth=None, latest_movie=None):
-        # Function responsible for adding a director to the database through api        
+        # Function responsible for adding a director to the database through api
         director_data: dict = {
             'name': name,
             'date_of_birth': date_of_birth,
@@ -246,7 +246,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_directors(self):
-                # Function responsible for getting data about all directors in the database through api
+        # Function responsible for getting data about all directors in the database through api
         response = requests.get(f"{self.API_BASE_URL}/directors/")
 
         if response.status_code == 200:
@@ -271,7 +271,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_movies_for_director(self, director_id: int):
-        # Function responsible for getting data through api about all the movies directed by a selected director in the database        
+        # Function responsible for getting data through api about all the movies directed by a selected director in the database
         response = requests.get(
             f"{self.API_BASE_URL}/directors/{director_id}/movies/")
         if response.status_code == 200:
@@ -308,7 +308,7 @@ class ApiOperations(BaseCommand):
                             person_type} object, status code: {response.status_code}")
 
     def add_movie(self, title: str, lead_actor_given: str, director_given: str, premiere_date=None, category=None, academy_awards=None):
-        # Function responsible for adding a movie to the database through api        
+        # Function responsible for adding a movie to the database through api
         try:
             director = self.get_or_create(director_given, "directors")
             lead_actor = self.get_or_create(lead_actor_given, "actors")
