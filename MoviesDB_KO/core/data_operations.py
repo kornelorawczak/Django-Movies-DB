@@ -7,7 +7,9 @@ from django.db.utils import IntegrityError
 
 
 class DatabaseOperations(BaseCommand):
+    # This class contains all the functions aplicable to local database version of text client
     def add_actor(self, name, date_of_birth=None, latest_movie=None):
+        # Function responsible for adding an actor
         try:
             self.name = name
             try:
@@ -29,6 +31,7 @@ class DatabaseOperations(BaseCommand):
                 "Mandatory fields weren't given, you need to pass the name at least"))
 
     def get_actors(self):
+        # Function responsible for getting data about all the actors in database
         actors = Actors.objects.all()
         return [{'id': actor.id,
                  'name': actor.name,
@@ -36,12 +39,14 @@ class DatabaseOperations(BaseCommand):
                  'latest_movie': actor.latest_movie} for actor in actors]
 
     def delete_actor(self, actor_id):
+        # Function responsible for deleting an actor from the database
         actor_to_delete = Actors.objects.get(id=actor_id)
         actor_to_delete.delete()
         self.stdout.write(self.style.SUCCESS(
             f"Successfully deleted actor no. {actor_id} from database!"))
 
     def get_movies_for_actor(self, actor_id):
+        # Function responsible for getting data about movies that include acting performance of a chosen actor
         actor = Actors.objects.get(id=actor_id)
         movies = Movies.objects.filter(lead_actor=actor)
         return [{'title': movie.title,
@@ -51,6 +56,7 @@ class DatabaseOperations(BaseCommand):
                 for movie in movies]
 
     def add_director(self, name, date_of_birth=None, latest_movie=None):
+        # Function responsible for adding a director to the database
         try:
             self.name = name
             try:
@@ -73,6 +79,7 @@ class DatabaseOperations(BaseCommand):
                 "Mandatory fields weren't given, you need to pass the name at least"))
 
     def get_directors(self):
+        # Function responsible for getting data about all directors in the database
         directors = Directors.objects.all()
         return [{'id': director.id,
                  'name': director.name,
@@ -80,12 +87,14 @@ class DatabaseOperations(BaseCommand):
                  'latest_movie': director.latest_movie} for director in directors]
 
     def delete_director(self, director_id):
+        # Function responsible for deleting a director from the database
         director_to_delete = Directors.objects.get(id=director_id)
         director_to_delete.delete()
         self.stdout.write(self.style.SUCCESS(
             f"Successfully deleted director no. {director_id} from database!"))
 
     def get_movies_for_director(self, director_id):
+        # Function responsible for getting data about all the movies directed by a selected director in the database
         director = Directors.objects.get(id=director_id)
         movies = Movies.objects.filter(director=director)
         return [{'title': movie.title,
@@ -95,6 +104,7 @@ class DatabaseOperations(BaseCommand):
                 for movie in movies]
 
     def add_movie(self, title, lead_actor_given, director_given, premiere_date=None, category=None, academy_awards=None):
+        # Function responsible for adding a movie to the database
         try:
             self.title = title
             self.premiere_date = premiere_date
@@ -130,6 +140,7 @@ class DatabaseOperations(BaseCommand):
                 'Director given doesnt exist in the Database'))
 
     def get_movies(self):
+        # Function responsible for getting data about all the movies in the database
         movies = Movies.objects.all()
         return [{'id': movie.id,
                  'title': movie.title,
@@ -140,6 +151,7 @@ class DatabaseOperations(BaseCommand):
                  'academy_awards': movie.academy_awards} for movie in movies]
 
     def delete_movie(self, movie_id):
+        # Function responsible for deleting a movie from the database
         movie_to_delete = Movies.objects.get(id=movie_id)
         movie_to_delete.delete()
         self.stdout.write(self.style.SUCCESS(
@@ -147,9 +159,11 @@ class DatabaseOperations(BaseCommand):
 
 
 class ApiOperations(BaseCommand):
+    # This class contains all the functions aplicable to the api mode in text client
     API_BASE_URL = "http://127.0.0.1:8000"
 
     def add_actor(self, name, date_of_birth=None, latest_movie=None):
+                # Function responsible for adding an actor through api
         actor_data = {
             'name': name,
             'date_of_birth': date_of_birth,
@@ -171,7 +185,7 @@ class ApiOperations(BaseCommand):
 
     def get_actors(self):
         response = requests.get(f"{self.API_BASE_URL}/actors/")
-
+        # Function responsible for getting data about all the actors in database through api
         if response.status_code == 200:
             return response.json()
         else:
@@ -179,6 +193,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def delete_actor(self, actor_id):
+        # Function responsible for deleting an actor from the database through api
         response = requests.delete(f"{self.API_BASE_URL}/actors/{actor_id}/")
 
         if response.status_code == 204:
@@ -192,6 +207,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_movies_for_actor(self, actor_id):
+        # Function responsible for getting data through api about movies that include acting performance of a chosen actor        
         response = requests.get(
             f"{self.API_BASE_URL}/actors/{actor_id}/movies/")
         if response.status_code == 200:
@@ -209,6 +225,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def add_director(self, name, date_of_birth=None, latest_movie=None):
+        # Function responsible for adding a director to the database through api        
         director_data = {
             'name': name,
             'date_of_birth': date_of_birth,
@@ -229,6 +246,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_directors(self):
+                # Function responsible for getting data about all directors in the database through api
         response = requests.get(f"{self.API_BASE_URL}/directors/")
 
         if response.status_code == 200:
@@ -238,6 +256,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def delete_director(self, director_id):
+        # Function responsible for deleting a director from the database through api
         response = requests.delete(
             f"{self.API_BASE_URL}/directors/{director_id}/")
 
@@ -252,6 +271,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_movies_for_director(self, director_id):
+        # Function responsible for getting data through api about all the movies directed by a selected director in the database        
         response = requests.get(
             f"{self.API_BASE_URL}/directors/{director_id}/movies/")
         if response.status_code == 200:
@@ -269,6 +289,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_or_create(self, person_name, person_type):
+        # Function that either gets data through api about an actor or director if a person of given name exists, if not it creates a person with that name
         response = requests.get(
             f"{self.API_BASE_URL}/{person_type}/{person_name}/")
         if response.status_code == 200:
@@ -287,6 +308,7 @@ class ApiOperations(BaseCommand):
                             person_type} object, status code: {response.status_code}")
 
     def add_movie(self, title, lead_actor_given, director_given, premiere_date=None, category=None, academy_awards=None):
+        # Function responsible for adding a movie to the database through api        
         try:
             director = self.get_or_create(director_given, "directors")
             lead_actor = self.get_or_create(lead_actor_given, "actors")
@@ -318,6 +340,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def get_movies(self):
+        # Function responsible for getting data through api about all the movies in the database
         response = requests.get(f"{self.API_BASE_URL}/movies/")
 
         if response.status_code == 200:
@@ -337,6 +360,7 @@ class ApiOperations(BaseCommand):
                 f"Error: {response.status_code}"))
 
     def delete_movie(self, movie_id):
+        # Function responsible for deleting a movie from the database through api
         response = requests.delete(f"{self.API_BASE_URL}/movies/{movie_id}/")
 
         if response.status_code == 204:

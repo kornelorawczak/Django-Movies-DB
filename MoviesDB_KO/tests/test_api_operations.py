@@ -9,7 +9,9 @@ def database_operations():
 
 @pytest.mark.django_db
 class TestApiOperations:
+    # This class tests (using pytest library) whether api operations work properly *(python manage.py runserver before launching the tests)
     def test_add_director(self, database_operations):
+        # Tests whether adding a director through api works properly
         director_name = 'John Doe'
         director = database_operations.add_director(name=director_name)
         directors = database_operations.get_directors()
@@ -17,6 +19,7 @@ class TestApiOperations:
         database_operations.delete_director(director['id'])
 
     def test_delete_director(self, database_operations):
+        # Tests whether deleting a director from database through api works properly
         director_name = 'John Doe'
         director = database_operations.add_director(name=director_name)
         database_operations.delete_director(director['id'])
@@ -24,6 +27,7 @@ class TestApiOperations:
         assert director not in directors
 
     def test_getting_movies_for_director(self, database_operations):
+        # Tests whether getting information about movies directed by the director from the database works properly through api
         director_name = 'John Doe'
         director = database_operations.add_director(name=director_name)
         movie_title = 'Test Movie'

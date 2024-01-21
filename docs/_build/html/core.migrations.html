@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>core.migrations package &#8212; MoviesDB_KO  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="manage module" href="manage.html" />
+    <link rel="prev" title="core package" href="core.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="core-migrations-package">
+<h1>core.migrations package<a class="headerlink" href="#core-migrations-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-core.migrations.0001_initial">
+<span id="core-migrations-0001-initial-module"></span><h2>core.migrations.0001_initial module<a class="headerlink" href="#module-core.migrations.0001_initial" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0001_initial.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0001_initial.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0001_initial.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0001_initial.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#core.migrations.0001_initial.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0001_initial.Migration.initial">
+<span class="sig-name descname"><span class="pre">initial</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.migrations.0001_initial.Migration.initial" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0001_initial.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;CreateModel</span>&#160; <span class="pre">name='Actors',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('name',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('surname',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('date_of_birth',</span> <span class="pre">&lt;django.db.models.fields.DateField&gt;)]&gt;,</span> <span class="pre">&lt;CreateModel</span>&#160; <span class="pre">name='Directors',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('name',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('surname',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('date_of_birth',</span> <span class="pre">&lt;django.db.models.fields.DateField&gt;),</span> <span class="pre">('latest_movie',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;)]&gt;,</span> <span class="pre">&lt;CreateModel</span>&#160; <span class="pre">name='Movies',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('title',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('premiere_date',</span> <span class="pre">&lt;django.db.models.fields.DateField&gt;),</span> <span class="pre">('category',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('academy_awards',</span> <span class="pre">&lt;django.db.models.fields.SmallIntegerField&gt;),</span> <span class="pre">('director_id',</span> <span class="pre">&lt;django.db.models.fields.related.ForeignKey&gt;),</span> <span class="pre">('lead_actor_id',</span> <span class="pre">&lt;django.db.models.fields.related.ForeignKey&gt;)]&gt;]</span></em><a class="headerlink" href="#core.migrations.0001_initial.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0002_rename_director_id_movies_director_and_more">
+<span id="core-migrations-0002-rename-director-id-movies-director-and-more-module"></span><h2>core.migrations.0002_rename_director_id_movies_director_and_more module<a class="headerlink" href="#module-core.migrations.0002_rename_director_id_movies_director_and_more" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0002_rename_director_id_movies_director_and_more.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0002_rename_director_id_movies_director_and_more.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0002_rename_director_id_movies_director_and_more.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0002_rename_director_id_movies_director_and_more.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0001_initial')]</span></em><a class="headerlink" href="#core.migrations.0002_rename_director_id_movies_director_and_more.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0002_rename_director_id_movies_director_and_more.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;RenameField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">old_name='director_id',</span> <span class="pre">new_name='director'&gt;,</span> <span class="pre">&lt;RenameField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">old_name='lead_actor_id',</span> <span class="pre">new_name='lead_actor'&gt;]</span></em><a class="headerlink" href="#core.migrations.0002_rename_director_id_movies_director_and_more.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more">
+<span id="core-migrations-0003-remove-actors-surname-remove-directors-surname-and-more-module"></span><h2>core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more module<a class="headerlink" href="#module-core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0002_rename_director_id_movies_director_and_more')]</span></em><a class="headerlink" href="#core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;RemoveField</span>&#160; <span class="pre">model_name='actors',</span> <span class="pre">name='surname'&gt;,</span> <span class="pre">&lt;RemoveField</span>&#160; <span class="pre">model_name='directors',</span> <span class="pre">name='surname'&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='actors',</span> <span class="pre">name='date_of_birth',</span> <span class="pre">field=&lt;django.db.models.fields.DateField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='actors',</span> <span class="pre">name='name',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='directors',</span> <span class="pre">name='date_of_birth',</span> <span class="pre">field=&lt;django.db.models.fields.DateField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='directors',</span> <span class="pre">name='latest_movie',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='directors',</span> <span class="pre">name='name',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='academy_awards',</span> <span class="pre">field=&lt;django.db.models.fields.SmallIntegerField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='director',</span> <span class="pre">field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='lead_actor',</span> <span class="pre">field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='premiere_date',</span> <span class="pre">field=&lt;django.db.models.fields.DateField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='title',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0003_remove_actors_surname_remove_directors_surname_and_more.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0004_actors_latest_movie">
+<span id="core-migrations-0004-actors-latest-movie-module"></span><h2>core.migrations.0004_actors_latest_movie module<a class="headerlink" href="#module-core.migrations.0004_actors_latest_movie" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0004_actors_latest_movie.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0004_actors_latest_movie.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0004_actors_latest_movie.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0004_actors_latest_movie.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0003_remove_actors_surname_remove_directors_surname_and_more')]</span></em><a class="headerlink" href="#core.migrations.0004_actors_latest_movie.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0004_actors_latest_movie.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AddField</span>&#160; <span class="pre">model_name='actors',</span> <span class="pre">name='latest_movie',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0004_actors_latest_movie.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0005_alter_actors_latest_movie_and_more">
+<span id="core-migrations-0005-alter-actors-latest-movie-and-more-module"></span><h2>core.migrations.0005_alter_actors_latest_movie_and_more module<a class="headerlink" href="#module-core.migrations.0005_alter_actors_latest_movie_and_more" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0005_alter_actors_latest_movie_and_more.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0005_alter_actors_latest_movie_and_more.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0005_alter_actors_latest_movie_and_more.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0005_alter_actors_latest_movie_and_more.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0004_actors_latest_movie')]</span></em><a class="headerlink" href="#core.migrations.0005_alter_actors_latest_movie_and_more.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0005_alter_actors_latest_movie_and_more.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AlterField</span>&#160; <span class="pre">model_name='actors',</span> <span class="pre">name='latest_movie',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='directors',</span> <span class="pre">name='latest_movie',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0005_alter_actors_latest_movie_and_more.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0006_alter_movies_academy_awards_alter_movies_category">
+<span id="core-migrations-0006-alter-movies-academy-awards-alter-movies-category-module"></span><h2>core.migrations.0006_alter_movies_academy_awards_alter_movies_category module<a class="headerlink" href="#module-core.migrations.0006_alter_movies_academy_awards_alter_movies_category" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0006_alter_movies_academy_awards_alter_movies_category.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0006_alter_movies_academy_awards_alter_movies_category.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0006_alter_movies_academy_awards_alter_movies_category.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0006_alter_movies_academy_awards_alter_movies_category.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0005_alter_actors_latest_movie_and_more')]</span></em><a class="headerlink" href="#core.migrations.0006_alter_movies_academy_awards_alter_movies_category.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0006_alter_movies_academy_awards_alter_movies_category.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='academy_awards',</span> <span class="pre">field=&lt;django.db.models.fields.SmallIntegerField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='category',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0006_alter_movies_academy_awards_alter_movies_category.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0007_alter_actors_name_alter_directors_name_and_more">
+<span id="core-migrations-0007-alter-actors-name-alter-directors-name-and-more-module"></span><h2>core.migrations.0007_alter_actors_name_alter_directors_name_and_more module<a class="headerlink" href="#module-core.migrations.0007_alter_actors_name_alter_directors_name_and_more" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0007_alter_actors_name_alter_directors_name_and_more.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0007_alter_actors_name_alter_directors_name_and_more.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0007_alter_actors_name_alter_directors_name_and_more.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0007_alter_actors_name_alter_directors_name_and_more.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0006_alter_movies_academy_awards_alter_movies_category')]</span></em><a class="headerlink" href="#core.migrations.0007_alter_actors_name_alter_directors_name_and_more.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0007_alter_actors_name_alter_directors_name_and_more.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AlterField</span>&#160; <span class="pre">model_name='actors',</span> <span class="pre">name='name',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='directors',</span> <span class="pre">name='name',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='title',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0007_alter_actors_name_alter_directors_name_and_more.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0008_alter_actors_name_alter_directors_name_and_more">
+<span id="core-migrations-0008-alter-actors-name-alter-directors-name-and-more-module"></span><h2>core.migrations.0008_alter_actors_name_alter_directors_name_and_more module<a class="headerlink" href="#module-core.migrations.0008_alter_actors_name_alter_directors_name_and_more" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0008_alter_actors_name_alter_directors_name_and_more.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0008_alter_actors_name_alter_directors_name_and_more.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0008_alter_actors_name_alter_directors_name_and_more.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0008_alter_actors_name_alter_directors_name_and_more.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0007_alter_actors_name_alter_directors_name_and_more')]</span></em><a class="headerlink" href="#core.migrations.0008_alter_actors_name_alter_directors_name_and_more.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0008_alter_actors_name_alter_directors_name_and_more.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AlterField</span>&#160; <span class="pre">model_name='actors',</span> <span class="pre">name='name',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='directors',</span> <span class="pre">name='name',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='title',</span> <span class="pre">field=&lt;django.db.models.fields.CharField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0008_alter_actors_name_alter_directors_name_and_more.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0009_alter_movies_premiere_date">
+<span id="core-migrations-0009-alter-movies-premiere-date-module"></span><h2>core.migrations.0009_alter_movies_premiere_date module<a class="headerlink" href="#module-core.migrations.0009_alter_movies_premiere_date" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0009_alter_movies_premiere_date.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0009_alter_movies_premiere_date.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0009_alter_movies_premiere_date.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0009_alter_movies_premiere_date.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0008_alter_actors_name_alter_directors_name_and_more')]</span></em><a class="headerlink" href="#core.migrations.0009_alter_movies_premiere_date.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0009_alter_movies_premiere_date.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='premiere_date',</span> <span class="pre">field=&lt;django.db.models.fields.DateField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0009_alter_movies_premiere_date.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations.0010_alter_movies_academy_awards_and_more">
+<span id="core-migrations-0010-alter-movies-academy-awards-and-more-module"></span><h2>core.migrations.0010_alter_movies_academy_awards_and_more module<a class="headerlink" href="#module-core.migrations.0010_alter_movies_academy_awards_and_more" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="core.migrations.0010_alter_movies_academy_awards_and_more.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">core.migrations.0010_alter_movies_academy_awards_and_more.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#core.migrations.0010_alter_movies_academy_awards_and_more.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0010_alter_movies_academy_awards_and_more.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('core',</span> <span class="pre">'0009_alter_movies_premiere_date')]</span></em><a class="headerlink" href="#core.migrations.0010_alter_movies_academy_awards_and_more.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="core.migrations.0010_alter_movies_academy_awards_and_more.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='academy_awards',</span> <span class="pre">field=&lt;django.db.models.fields.SmallIntegerField&gt;&gt;,</span> <span class="pre">&lt;AlterField</span>&#160; <span class="pre">model_name='movies',</span> <span class="pre">name='premiere_date',</span> <span class="pre">field=&lt;django.db.models.fields.DateField&gt;&gt;]</span></em><a class="headerlink" href="#core.migrations.0010_alter_movies_academy_awards_and_more.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-core.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-core.migrations" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MoviesDB_KO</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MoviesDB_KO</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="MoviesDB_KO.html">MoviesDB_KO package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="core.html">core package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">scripts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">MoviesDB_KO</a><ul>
+  <li><a href="core.html">core package</a><ul>
+      <li>Previous: <a href="core.html" title="previous chapter">core package</a></li>
+      <li>Next: <a href="manage.html" title="next chapter">manage module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, kornelorawczak.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/core.migrations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

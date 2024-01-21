@@ -7,6 +7,7 @@ from django.db.utils import IntegrityError
 
 
 class Command(BaseCommand):
+        # This class is responsible for implementing a text client for the movies model (python manage.py movies ...)
     help = 'Use --add followed by --title, --premiere_date, --director, --category, --lead_actor, --academy_awards to add a new Movie to the database. \n Use --write to write out all the \
         movies that currently are in database'
 
@@ -32,13 +33,16 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         mode = kwargs['mode']
-
+        # depending on the 'mode' flag actions will be performed locally or through the api (defaultly its set for the local handling)
         if mode == 'database':
             database_operations = DatabaseOperations()
         elif mode == 'api':
             database_operations = ApiOperations()
 
         if kwargs['add']:
+        # 'add' flag is reponsible for adding a movie record to the database. 
+        # You need to pass at least a title, director and actor (both of them shall be passed as a name)
+        # If there won't be an actor/director with given name in the database, they will be created
             title = kwargs['title']
             premiere_date = kwargs.get('premiere_date', None)
             if premiere_date != None:
@@ -52,11 +56,13 @@ class Command(BaseCommand):
                 title, lead_actor_given, director_given, premiere_date, category, academy_awards)
 
         elif kwargs['write']:
+            # 'write' flag is reponsible for outputting data about all the movies in the database
             movies = database_operations.get_movies()
             for i, movie in enumerate(movies):
                 self.stdout.write(f'{movie['id']}. "{movie['title']}" ({movie['category']}) premiered {movie['premiere_date']}. It was directed by {
                                   movie['director']} and starred {movie['lead_actor']}. It won {movie['academy_awards']} academy awards.')
         elif kwargs['delete']:
+            # 'delete' flag will delete a movie of index matching passed one
             record_number = kwargs['delete']
             database_operations.delete_movie(record_number)
         else:
