@@ -8,7 +8,7 @@ from django.db.utils import IntegrityError
 
 class DatabaseOperations(BaseCommand):
     # This class contains all the functions aplicable to local database version of text client
-    def add_actor(self, name, date_of_birth=None, latest_movie=None):
+    def add_actor(self, name: str, date_of_birth=None, latest_movie=None):
         # Function responsible for adding an actor
         try:
             self.name = name
@@ -19,7 +19,7 @@ class DatabaseOperations(BaseCommand):
                 self.date_of_birth = None
             self.latest_movie = latest_movie
 
-            actor = Actors.objects.create(
+            actor: Actors = Actors.objects.create(
                 name=self.name,
                 date_of_birth=self.date_of_birth,
                 latest_movie=self.latest_movie
@@ -30,32 +30,32 @@ class DatabaseOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 "Mandatory fields weren't given, you need to pass the name at least"))
 
-    def get_actors(self):
+    def get_actors(self) -> list:
         # Function responsible for getting data about all the actors in database
-        actors = Actors.objects.all()
+        actors: Actors = Actors.objects.all()
         return [{'id': actor.id,
                  'name': actor.name,
                  'date_of_birth': actor.date_of_birth,
                  'latest_movie': actor.latest_movie} for actor in actors]
 
-    def delete_actor(self, actor_id):
+    def delete_actor(self, actor_id: int):
         # Function responsible for deleting an actor from the database
-        actor_to_delete = Actors.objects.get(id=actor_id)
+        actor_to_delete: Actors = Actors.objects.get(id=actor_id)
         actor_to_delete.delete()
         self.stdout.write(self.style.SUCCESS(
             f"Successfully deleted actor no. {actor_id} from database!"))
 
-    def get_movies_for_actor(self, actor_id):
+    def get_movies_for_actor(self, actor_id: int) -> list:
         # Function responsible for getting data about movies that include acting performance of a chosen actor
-        actor = Actors.objects.get(id=actor_id)
-        movies = Movies.objects.filter(lead_actor=actor)
+        actor: Actors = Actors.objects.get(id=actor_id)
+        movies: Movies = Movies.objects.filter(lead_actor=actor)
         return [{'title': movie.title,
                  'premiere_date': movie.premiere_date,
                  'director': movie.director.name,
                  'academy_awards': movie.academy_awards}
                 for movie in movies]
 
-    def add_director(self, name, date_of_birth=None, latest_movie=None):
+    def add_director(self, name: str, date_of_birth=None, latest_movie=None):
         # Function responsible for adding a director to the database
         try:
             self.name = name
@@ -66,7 +66,7 @@ class DatabaseOperations(BaseCommand):
                 self.date_of_birth = None
             self.latest_movie = latest_movie
 
-            director = Directors.objects.create(
+            director: Directors = Directors.objects.create(
                 name=self.name,
                 date_of_birth=self.date_of_birth,
                 latest_movie=self.latest_movie
@@ -78,32 +78,32 @@ class DatabaseOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 "Mandatory fields weren't given, you need to pass the name at least"))
 
-    def get_directors(self):
+    def get_directors(self) -> list:
         # Function responsible for getting data about all directors in the database
-        directors = Directors.objects.all()
+        directors: Directors = Directors.objects.all()
         return [{'id': director.id,
                  'name': director.name,
                  'date_of_birth': director.date_of_birth,
                  'latest_movie': director.latest_movie} for director in directors]
 
-    def delete_director(self, director_id):
+    def delete_director(self, director_id: int):
         # Function responsible for deleting a director from the database
-        director_to_delete = Directors.objects.get(id=director_id)
+        director_to_delete: Directors = Directors.objects.get(id=director_id)
         director_to_delete.delete()
         self.stdout.write(self.style.SUCCESS(
             f"Successfully deleted director no. {director_id} from database!"))
 
-    def get_movies_for_director(self, director_id):
+    def get_movies_for_director(self, director_id: int) -> list:
         # Function responsible for getting data about all the movies directed by a selected director in the database
-        director = Directors.objects.get(id=director_id)
-        movies = Movies.objects.filter(director=director)
+        director: Directors = Directors.objects.get(id=director_id)
+        movies: Movies = Movies.objects.filter(director=director)
         return [{'title': movie.title,
                  'premiere_date': movie.premiere_date,
                  'lead_actor': movie.lead_actor.name,
                  'academy_awards': movie.academy_awards}
                 for movie in movies]
 
-    def add_movie(self, title, lead_actor_given, director_given, premiere_date=None, category=None, academy_awards=None):
+    def add_movie(self, title: str, lead_actor_given: str, director_given: str, premiere_date=None, category=None, academy_awards=None):
         # Function responsible for adding a movie to the database
         try:
             self.title = title
@@ -118,7 +118,7 @@ class DatabaseOperations(BaseCommand):
             self.lead_actor, created = Actors.objects.get_or_create(
                 name=self.lead_actor_given)
 
-            movie = Movies.objects.create(
+            movie: Movies = Movies.objects.create(
                 title=self.title,
                 premiere_date=self.premiere_date,
                 director=self.director,
@@ -139,9 +139,9 @@ class DatabaseOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 'Director given doesnt exist in the Database'))
 
-    def get_movies(self):
+    def get_movies(self) -> list:
         # Function responsible for getting data about all the movies in the database
-        movies = Movies.objects.all()
+        movies: Movies = Movies.objects.all()
         return [{'id': movie.id,
                  'title': movie.title,
                  'premiere_date': movie.premiere_date,
@@ -150,9 +150,9 @@ class DatabaseOperations(BaseCommand):
                  'lead_actor': movie.lead_actor,
                  'academy_awards': movie.academy_awards} for movie in movies]
 
-    def delete_movie(self, movie_id):
+    def delete_movie(self, movie_id: int):
         # Function responsible for deleting a movie from the database
-        movie_to_delete = Movies.objects.get(id=movie_id)
+        movie_to_delete: Movies = Movies.objects.get(id=movie_id)
         movie_to_delete.delete()
         self.stdout.write(self.style.SUCCESS(
             f"Successfully deleted movie no. {movie_id} from database!"))
@@ -162,9 +162,9 @@ class ApiOperations(BaseCommand):
     # This class contains all the functions aplicable to the api mode in text client
     API_BASE_URL = "http://127.0.0.1:8000"
 
-    def add_actor(self, name, date_of_birth=None, latest_movie=None):
+    def add_actor(self, name: str, date_of_birth=None, latest_movie=None):
                 # Function responsible for adding an actor through api
-        actor_data = {
+        actor_data: dict = {
             'name': name,
             'date_of_birth': date_of_birth,
             'latest_movie': latest_movie
@@ -192,7 +192,7 @@ class ApiOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 f"Error: {response.status_code}"))
 
-    def delete_actor(self, actor_id):
+    def delete_actor(self, actor_id: int):
         # Function responsible for deleting an actor from the database through api
         response = requests.delete(f"{self.API_BASE_URL}/actors/{actor_id}/")
 
@@ -206,7 +206,7 @@ class ApiOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 f"Error: {response.status_code}"))
 
-    def get_movies_for_actor(self, actor_id):
+    def get_movies_for_actor(self, actor_id: int):
         # Function responsible for getting data through api about movies that include acting performance of a chosen actor        
         response = requests.get(
             f"{self.API_BASE_URL}/actors/{actor_id}/movies/")
@@ -224,9 +224,9 @@ class ApiOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 f"Error: {response.status_code}"))
 
-    def add_director(self, name, date_of_birth=None, latest_movie=None):
+    def add_director(self, name: str, date_of_birth=None, latest_movie=None):
         # Function responsible for adding a director to the database through api        
-        director_data = {
+        director_data: dict = {
             'name': name,
             'date_of_birth': date_of_birth,
             'latest_movie': latest_movie
@@ -255,7 +255,7 @@ class ApiOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 f"Error: {response.status_code}"))
 
-    def delete_director(self, director_id):
+    def delete_director(self, director_id: int):
         # Function responsible for deleting a director from the database through api
         response = requests.delete(
             f"{self.API_BASE_URL}/directors/{director_id}/")
@@ -270,7 +270,7 @@ class ApiOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 f"Error: {response.status_code}"))
 
-    def get_movies_for_director(self, director_id):
+    def get_movies_for_director(self, director_id: int):
         # Function responsible for getting data through api about all the movies directed by a selected director in the database        
         response = requests.get(
             f"{self.API_BASE_URL}/directors/{director_id}/movies/")
@@ -288,14 +288,14 @@ class ApiOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 f"Error: {response.status_code}"))
 
-    def get_or_create(self, person_name, person_type):
+    def get_or_create(self, person_name: str, person_type: str):
         # Function that either gets data through api about an actor or director if a person of given name exists, if not it creates a person with that name
         response = requests.get(
             f"{self.API_BASE_URL}/{person_type}/{person_name}/")
         if response.status_code == 200:
             return response.json()['id']
         elif response.status_code == 404:
-            person_data = {'name': person_name}
+            person_data: dict = {'name': person_name}
             response = requests.post(
                 f"{self.API_BASE_URL}/{person_type}/", data=person_data)
             if response.status_code == 201:
@@ -307,12 +307,12 @@ class ApiOperations(BaseCommand):
             raise Exception(f"Unexpected exceptio when trying to get or create a {
                             person_type} object, status code: {response.status_code}")
 
-    def add_movie(self, title, lead_actor_given, director_given, premiere_date=None, category=None, academy_awards=None):
+    def add_movie(self, title: str, lead_actor_given: str, director_given: str, premiere_date=None, category=None, academy_awards=None):
         # Function responsible for adding a movie to the database through api        
         try:
             director = self.get_or_create(director_given, "directors")
             lead_actor = self.get_or_create(lead_actor_given, "actors")
-            movie_data = {
+            movie_data: dict = {
                 'title': title,
                 'premiere_date': premiere_date,
                 'director': director,
@@ -359,7 +359,7 @@ class ApiOperations(BaseCommand):
             self.stdout.write(self.style.ERROR(
                 f"Error: {response.status_code}"))
 
-    def delete_movie(self, movie_id):
+    def delete_movie(self, movie_id: int):
         # Function responsible for deleting a movie from the database through api
         response = requests.delete(f"{self.API_BASE_URL}/movies/{movie_id}/")
 
